@@ -1,10 +1,10 @@
 <?php
 /**
  * THIS WORK IS COPYRIGHTED
- * Cashshop Log
+ * Payment Gateway Crypto
  * --------------------------------------------------------------------
  * Contact: 
- * Discord: єℓƒιη#9444
+ * Discord: xpayapi
  */
 return array(
 	'modules' => array(

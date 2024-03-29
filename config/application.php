@@ -12,6 +12,7 @@ return array(
 	'MinDonationAmountLTC'	=> 10, // Minimum Litecoin amount.
 	'MinDonationAmountDOGE'	=> 10, // Minimum Dogecoin amount.
 	'MinDonationAmountDASH'	=> 10, // Minimum Dash amount.
+	'MinDonationAmountBNB'		=> 1, // Minimum BNB amount.
 	'MinDonationAmountTRON'		=> 1, // Minimum Tron amount.
 	'MinDonationAmountTETHER'	=> 5, // Minimum Tether amount.
     

@@ -1,7 +1,7 @@
 <?php
 /**
  * THIS WORK IS COPYRIGHTED
- * Payment Gateway Crypto
+ * Payment Gateway Crypto https://xPayapi.com
  * --------------------------------------------------------------------
  * Contact: 
  * Discord: xpayapi
@@ -16,6 +16,9 @@ return array(
 			'complete' => AccountLevel::ANYONE,
 			'debug'    => AccountLevel::ANYONE,
 			'history'  => AccountLevel::NORMAL,
+			'cancel'   => AccountLevel::ANYONE,
+			'invoice'   => AccountLevel::ANYONE,
+			'process'   => AccountLevel::ANYONE,
 			'prunes'   => AccountLevel::ANYONE,
 			'trusted'  => AccountLevel::NORMAL
 		)
@@ -23,5 +26,5 @@ return array(
 	'features' => array(
 		// None.
 	)
-)
+);
 ?>

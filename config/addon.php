@@ -32,6 +32,11 @@ return array(
 			'Donate Crypto'		=> array('module' => 'donatecrypto'),
 		),
 	),
+	'SubMenuItems' => array(
+		'donatecrypto' => array(
+			'history'  => 'Donation History',
+		),
+	),
 
 	'FluxTables'		=> array(
 		'invoiceTable'			=> 'crypto_invoice',

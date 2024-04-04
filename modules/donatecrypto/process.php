@@ -2,72 +2,9 @@
 if (!defined('FLUX_ROOT')) exit;
 
 if (count($_REQUEST)) {
-    $creditsTables    = Flux::config('FluxTables.AccRegNumTable');
-    if (isset($_REQUEST["txn_id"]) && isset($_REQUEST["txn_type"]) && isset($_REQUEST["custom"]) && strpos($_REQUEST["custom"], "paypal") !== false) {
-        // Handle the Crypto response.
-        // Assign posted variables to local data array.
-        $customdata = explode("|",$_REQUEST['custom']);
-        $data = [
-            'item_name' => $_REQUEST['item_name'],
-            'item_number' => $_REQUEST['item_number'],
-            'payment_status' => $_REQUEST['payment_status'],
-            'payment_amount' => $_REQUEST['mc_gross'],
-            'payment_currency' => $_REQUEST['mc_currency'],
-            'txn_id' => $_REQUEST['txn_id'],
-            'receiver_email' => $_REQUEST['receiver_email'],
-            'payer_email' => $_REQUEST['payer_email'],
-            'payment_type' => $customdata[0],
-            'username' => $customdata[2],
-            'accountidname' => $customdata[3],
-            'custom' => $_REQUEST['custom'],
-        ];
-        
-        // We need to verify the transaction comes from Crypto and check we've not
-        // already processed the transaction before adding the payment to our
-        // database.
-        if (verifyTransaction($_REQUEST) && checkTxnid($data['txn_id'])) {
-            // Payment successfully added.
-            $creditsTable    = Flux::config('FluxTables.CreditsTable');
-            // check the amount send from payer
-            $minimum = Flux::config('MinDonationAmountPaypal');
-            $amountCredits = ($data['payment_amount']/Flux::config('CreditExchangeRate'));
-            if ($data['payment_amount'] >= $minimum) {
-                // get user details
-                $accountLogTable = Flux::config('FluxTables.AccountCreateTable');
-            
-                /** Completed Transactions **/
-                $sqlpartial  = "WHERE userid = ? ";
-                $sqlpartial .= "ORDER BY account_id DESC LIMIT 1";
-            
-                $col = "*";
-                $sql = "SELECT $col FROM {$server->loginDatabase}.$accountLogTable $sqlpartial";
-                $sth = $server->connection->getStatement($sql);
-                $sth->execute(array($data['accountidname']));
-                $checkUser = $sth->fetch();
-                $accountID = $checkUser->account_id;
-                
-                $sql = "SELECT * FROM {$servGroup->loginDatabase}.{$creditsTables} WHERE account_id = ?";
-                $sth = $servGroup->connection->getStatement($sql);
-                $sth->execute(array($accountID));
-                $acc = $sth->fetch();
-
-                if($acc){
-                    // update the data credits
-                    $sql = "UPDATE {$servGroup->loginDatabase}.{$creditsTables} SET `value` = `value` + ? WHERE account_id = ? AND `key` = ?";
-                    $sth = $servGroup->connection->getStatement($sql);
-                    $sth->execute(array($amountCredits,$accountID,"#CASHPOINTS"));
-                    sendLog("account_id_update: ".$data['accountidname']."-credits-".$accountID."-credits-".$amountCredits);
-                }else{
-                    // insert new data credits
-                    $sql = "INSERT into {$servGroup->loginDatabase}.{$creditsTables} (account_id, `key`, `value`) VALUES (?, ?, ?)";
-                    $sth = $servGroup->connection->getStatement($sql);
-                    $sth->execute(array($accountID,"#CASHPOINTS",$amountCredits));
-                    sendLog("account_id_insert: ".$data['accountidname']."-credits-".$accountID."-credits-".$amountCredits);
-                }
-
-            }
-        }
-    }
+    $getres = $_REQUEST;
+    unset($_REQUEST);
+    $getres = json_decode(file_get_contents('php://input'), true);
 }
 if (isset($_POST) || count($_POST)) {
     $getres = $_POST;

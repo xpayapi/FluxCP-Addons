@@ -19,9 +19,9 @@ Ragnarok Flux Control Panel (FluxCP) for rAthena servers.
 <li>6. Set up merchant.
 <br/>- Title => Merchant Title
 <br/>- Domain => Your Flux CP domain
-<br/>- URL notifications about the payment of the invoice => https://yourdomain.com/notify.php
-<br/>- URL Pages with a message about successful payment =>  https://yourdomain.com/notify.php
-<br/>- URL Pages with a failure message when paying => https://yourdomain.com/notify.php</li>
+<br/>- URL notifications about the payment of the invoice => https://yourdomain.com/?module=donatecrypto&action=notify
+<br/>- URL Pages with a message about successful payment =>  https://yourdomain.com/?module=donatecrypto&action=process
+<br/>- URL Pages with a failure message when paying => https://yourdomain.com/?module=donatecrypto&action=cancel</li>
 <li>7. Access link https://your.site.com/?module=donatecrypto
 <li>8. Done, Test it!</li>
 </ul>

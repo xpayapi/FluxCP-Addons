@@ -11,17 +11,17 @@ Ragnarok Flux Control Panel (FluxCP) for rAthena servers.
 
 <h1>Installation</h1>
 <ul>
-<li>1. Upload database.sql to your MySQL database</li>
-<li>2. Copy folder "lib" to your "lib" folder in Ragnarok FLUX CP</li>
-<li>3. Register account at xPayapi https://xpayapi.com/</li>
-<li>4. Create new merchant</li>
-<li>5. Set up merchant.
+<li>1. Open addons and add into your addons folder.</li>
+<li>2. Upload database.sql to your MySQL database</li>
+<li>3. Copy folder "lib" to your "lib" folder in Ragnarok FLUX CP</li>
+<li>4. Register account at xPayapi https://xpayapi.com/</li>
+<li>5. Create new merchant</li>
+<li>6. Set up merchant.
 <br/>- Title => Merchant Title
 <br/>- Domain => Your Flux CP domain
 <br/>- URL notifications about the payment of the invoice => https://yourdomain.com/notify.php
 <br/>- URL Pages with a message about successful payment =>  https://yourdomain.com/notify.php
 <br/>- URL Pages with a failure message when paying => https://yourdomain.com/notify.php</li>
-<li>6. Open addons and add into your addons folder.</li>
 <li>7. Access link https://your.site.com/?module=donatecrypto
 <li>8. Done, Test it!</li>
 </ul>

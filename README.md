@@ -11,7 +11,7 @@ Ragnarok Flux Control Panel (FluxCP) for rAthena servers.
 
 <h1>Installation</h1>
 <ul>
-<li>1. Open addons and add into your addons folder.</li>
+<li>1. Copy downloaded zip file to your Ragnarok Flux CP > Addons folder then Extract (Rename folder "Fluxcp-Addons" to "donatecrypto").</li>
 <li>2. Upload database.sql to your MySQL database</li>
 <li>3. Copy folder "lib" to your "lib" folder in Ragnarok FLUX CP</li>
 <li>4. Register account at xPayapi https://xpayapi.com/</li>

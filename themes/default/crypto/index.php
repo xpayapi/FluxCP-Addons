@@ -32,13 +32,7 @@
 	</div>
 
 	<?php if ($donationAmount && $donationType && $donationCredits): ?>
-    <?php if ($donationType == "bitcoin"): ?>
         <p><em class="text-danger">Please wait,</em> redirecting to payments...</p>
-        <meta http-equiv="refresh" content="5; url=<?php echo $redirect_url ?>">
-    <?php elseif ($donationType == "tether"): ?>
-        <p><em class="text-danger">Please wait,</em> redirecting to payments...</p>
-        <meta http-equiv="refresh" content="5; url=<?php echo $redirect_url ?>">
-    <?php endif ?>
 
     <?php else: ?>
 

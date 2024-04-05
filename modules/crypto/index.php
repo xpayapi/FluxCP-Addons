@@ -107,7 +107,7 @@ if (count($_POST) && $params->get('setamount')) {
 				$amount_in_coin = 0;
 			}else{
 				$getRate = (float)$getjson['data']['value'];
-				$amount_in_coin = cFormat(intval($donationAmount / $getRate));
+				$amount_in_coin = cFormat(intval($donationAmount * $getRate));
 			}
 		}
 

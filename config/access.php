@@ -8,7 +8,7 @@
  */
 return array(
 	'modules' => array(
-		'donatecrypto' => array(
+		'crypto' => array(
 			'index'    => AccountLevel::ANYONE,
 			'notify'   => AccountLevel::ANYONE,
 			'clear'    => AccountLevel::ANYONE,

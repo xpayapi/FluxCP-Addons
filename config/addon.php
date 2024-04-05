@@ -29,11 +29,11 @@ return array(
 
 	'MenuItems'		=> array(
 		'DonationsLabel'		=> array(
-			'Donate Crypto'		=> array('module' => 'donatecrypto'),
+			'Donate Crypto'		=> array('module' => 'crypto'),
 		),
 	),
 	'SubMenuItems' => array(
-		'donatecrypto' => array(
+		'crypto' => array(
 			'history'  => 'Donation History',
 		),
 	),

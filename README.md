@@ -11,7 +11,7 @@ Ragnarok Flux Control Panel (FluxCP) for rAthena servers.
 
 <h1>Installation</h1>
 <ul>
-<li>1. Copy downloaded zip file to your Ragnarok Flux CP > Addons folder then Extract (Rename folder "Fluxcp-Addons" to "donatecrypto").</li>
+<li>1. Copy downloaded zip file to your Ragnarok Flux CP > Addons folder then Extract (Rename folder "Fluxcp-Addons" to "crypto").</li>
 <li>2. Upload database.sql to your MySQL database</li>
 <li>3. Copy folder "lib" to your "lib" folder in Ragnarok FLUX CP</li>
 <li>4. Register account at xPayapi https://xpayapi.com/</li>
@@ -19,10 +19,10 @@ Ragnarok Flux Control Panel (FluxCP) for rAthena servers.
 <li>6. Set up merchant.
 <br/>- Title => Merchant Title
 <br/>- Domain => Your Flux CP domain
-<br/>- URL notifications about the payment of the invoice => https://yourdomain.com/?module=donatecrypto&action=notify
-<br/>- URL Pages with a message about successful payment =>  https://yourdomain.com/?module=donatecrypto&action=process
-<br/>- URL Pages with a failure message when paying => https://yourdomain.com/?module=donatecrypto&action=cancel</li>
-<li>7. Access link https://your.site.com/?module=donatecrypto
+<br/>- URL notifications about the payment of the invoice => https://yourdomain.com/?module=crypto&action=notify
+<br/>- URL Pages with a message about successful payment =>  https://yourdomain.com/?module=crypto&action=process
+<br/>- URL Pages with a failure message when paying => https://yourdomain.com/?module=crypto&action=cancel</li>
+<li>7. Access link https://your.site.com/?module=crypto
 <li>8. Done, Test it!</li>
 </ul>
 

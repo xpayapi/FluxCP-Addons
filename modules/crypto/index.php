@@ -169,7 +169,7 @@ if (count($_POST) && $params->get('setamount')) {
 				echo "</pre>";
 			} else {
 				$invoice_address = $res['data']['address'];
-				$redirect_url = '?module=donatecrypto&action=invoice&id='.$res['data']['invoice'];
+				$redirect_url = '?module=crypto&action=invoice&id='.$res['data']['invoice'];
 				
 				// add invoice in database
 				$values = array($session->account->account_id,$res['data']['invoice'],$res['data']['order_id'],$invoice_address,$donationAmount,$amount_in_coin,$donationCredits,$res['data']['currency'],$res['data']['notif_url'], 0, date('Y-m-d H:i:s'), $customDataEscaped);

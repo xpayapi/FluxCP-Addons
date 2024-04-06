@@ -72,6 +72,9 @@ if (count($_POST) && $params->get('setamount')) {
         }elseif($payment_type=="binancecoin"){
 			$currency_type = "BNB";
             $minimum = Flux::config('MinDonationAmountBNB');
+        }elseif($payment_type=="shibabep20"){
+			$currency_type = "SHIB";
+            $minimum = Flux::config('MinDonationAmountShibaBEP20');
         }elseif($payment_type=="tron_trc20" || $payment_type=="binancesmartchain_bep20" || $payment_type=="ethereum_erc20"){
 			$currency_type = "USDT";
             $minimum = Flux::config('MinDonationAmountTether');
@@ -131,12 +134,17 @@ if (count($_POST) && $params->get('setamount')) {
 				"tron"			=> 26, // TRX
 				"tron_trc20"	=> 27, // USDT    
 				"binancesmartchain_bep20" => 28, // USDT BEP20
+				"binancesmartchain_bep20" => 33, // SHIB BEP20
 				"ethereum_erc20" => 32, // USDT ERC20
 			];
 
 			$invoice_hash = md5(time());
 			$order_id = $invoice_hash;
 			$comment  = 'User ID: '.$session->account->userid . ' ('.$session->account->account_id.') donate $' . $donationAmount;
+			
+			if($payment_type=="shibabep20"){
+				$donationType = "binancesmartchain_bep20";
+			}
 
 			$xPayApi_params = [
 				"amount" => $amount_in_coin,

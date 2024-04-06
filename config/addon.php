@@ -9,11 +9,12 @@
 return array(
 	'MinDonationAmountBTC'	=> 10, // Minimum Bitcoin amount.
 	'MinDonationAmountETH'	=> 10, // Minimum Ethereum amount.
-	'MinDonationAmountLTC'	=> 10, // Minimum Litecoin amount.
-	'MinDonationAmountDOGE'	=> 10, // Minimum Dogecoin amount.
-	'MinDonationAmountDASH'	=> 10, // Minimum Dash amount.
-	'MinDonationAmountBNB'		=> 1, // Minimum BNB amount.
-	'MinDonationAmountTRON'		=> 1, // Minimum Tron amount.
+	'MinDonationAmountLTC'	=> 5, // Minimum Litecoin amount.
+	'MinDonationAmountDOGE'	=> 5, // Minimum Dogecoin amount.
+	'MinDonationAmountDASH'	=> 5, // Minimum Dash amount.
+	'MinDonationAmountBNB'		=> 5, // Minimum BNB amount.
+	'MinDonationAmountShibaBEP20' => 5, // Minimum Shiba BEP20 amount.
+	'MinDonationAmountTRON'		=> 5, // Minimum Tron amount.
 	'MinDonationAmountTETHER'	=> 5, // Minimum Tether amount.
     
 	'auto_credited_ingame'				=> '1', // 0 to disable automatic credits to in game CP, if set to 0 then you need a NPC to exchange Web Credits to In Game CP

@@ -78,6 +78,11 @@
                     <td><p style="color:orange"><?php echo htmlspecialchars(Flux::config('MinDonationAmountBNB'))." ";echo htmlspecialchars(Flux::config('DonationCurrency')); ?></p></td>
                 </tr>
                 <tr>
+                    <td width="1%"><input type="radio" name="payment_type" id="shibabep20" value="shibabep20" required></td>
+                    <td><img src="/themes/default/./img/payments/shibabep20.png"> <label for="shibabep20">Shiba BEP20</label></td>
+                    <td><p style="color:orange"><?php echo htmlspecialchars(Flux::config('MinDonationAmountShibaBEP20'))." ";echo htmlspecialchars(Flux::config('DonationCurrency')); ?></p></td>
+                </tr>
+                <tr>
                     <td width="1%"><input type="radio" name="payment_type" id="tron" value="tron" required></td>
                     <td><img src="/themes/default/./img/payments/tron.png"> <label for="tron">Tron</label></td>
                     <td><p style="color:orange"><?php echo htmlspecialchars(Flux::config('MinDonationAmountTRON'))." ";echo htmlspecialchars(Flux::config('DonationCurrency')); ?></p></td>

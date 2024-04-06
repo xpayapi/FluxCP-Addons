@@ -133,7 +133,7 @@ if (count($_POST) && $params->get('setamount')) {
 				"binancecoin"	=> 25, // BNB    
 				"tron"			=> 26, // TRX
 				"tron_trc20"	=> 27, // USDT    
-				"binancesmartchain_bep20" => 28, // USDT BEP20
+				"binancesmartchain_bep20" => 28, // USDT BEP20   
 				"binancesmartchain_bep20" => 33, // SHIB BEP20
 				"ethereum_erc20" => 32, // USDT ERC20
 			];
@@ -145,7 +145,6 @@ if (count($_POST) && $params->get('setamount')) {
 			if($payment_type=="shibabep20"){
 				$donationType = "binancesmartchain_bep20";
 			}
-
 			$xPayApi_params = [
 				"amount" => $amount_in_coin,
 				"system" => strtolower($donationType),
@@ -182,7 +181,7 @@ if (count($_POST) && $params->get('setamount')) {
 				// add invoice in database
 				$values = array($session->account->account_id,$res['data']['invoice'],$res['data']['order_id'],$invoice_address,$donationAmount,$amount_in_coin,$donationCredits,$res['data']['currency'],$res['data']['notif_url'], 0, date('Y-m-d H:i:s'), $customDataEscaped);
 				$invoiceTables    = Flux::config('FluxTables.invoiceTable');
-				$sql = "INSERT into {$server->loginDatabase}.{$invoiceTables} (account_id, invoice, order_id, `address`, amount, amount_in_coin, amount_credits, currency, `url`, `status`, created_at, `description`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";$sth = $server->connection->getStatement($sql);$sth->execute($values);
+				$sql = "INSERT into {$server->loginDatabase}.{$invoiceTables} (account_id, invoice, order_id, `address`, amount, amount_in_coin, amount_credits, currency, `url`, `status`, created_at, `description`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";$sth = $server->connection->getStatement($sql);$sth->execute($values);
 				header('Location: ' .$res['data']['pay_link'], true, 303);exit();
 			}
 		}

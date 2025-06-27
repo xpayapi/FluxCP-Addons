@@ -143,6 +143,18 @@ class xPayApiAPI
                 "USDT", "BUSD", "USDC", "SHIB",
             ],
         ],
+        "solana" => [
+            "type" => "crypto",
+            "system_id" => 43,
+            "system" => "Solana",
+            "tag" => true,
+            "tag_title" => "tag",
+            "qr_prefix" => "",
+            "display_name" => "SOL",
+            "currency_list" => [
+                "SOL",
+            ],
+        ],
         "berty" => [
             "type" => "emoney",
             "system_id" => 7,
@@ -153,6 +165,18 @@ class xPayApiAPI
             "display_name" => "BertyCash",
             "currency_list" => [
                 "USD", "RUB",
+            ],
+        ],
+        "ton" => [
+            "type" => "crypto",
+            "system_id" => 33,
+            "system" => "TON",
+            "tag" => true,
+            "tag_title" => "comment",
+            "qr_prefix" => "ton://transfer/",
+            "display_name" => "TON",
+            "currency_list" => [
+                "TON", "USDT",
             ],
         ],
     ];

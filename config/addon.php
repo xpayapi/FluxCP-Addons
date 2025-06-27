@@ -13,6 +13,8 @@ return array(
 	'MinDonationAmountDOGE'	=> 5, // Minimum Dogecoin amount.
 	'MinDonationAmountDASH'	=> 5, // Minimum Dash amount.
 	'MinDonationAmountBNB'		=> 5, // Minimum BNB amount.
+	'MinDonationAmountXRP'		=> 1, // Minimum XRP amount.
+	'MinDonationAmountSOL'		=> 0.01, // Minimum SOL amount.
 	'MinDonationAmountShibaBEP20' => 5, // Minimum Shiba BEP20 amount.
 	'MinDonationAmountTRON'		=> 5, // Minimum Tron amount.
 	'MinDonationAmountTETHER'	=> 5, // Minimum Tether amount.
@@ -25,6 +27,7 @@ return array(
 		'xpayapi.com',
 		'api.xpayapi.com',
 		'103.134.152.4',
+		'103.134.152.6',
 		'103.134.152.4/24',
 	),
 

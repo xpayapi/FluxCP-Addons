@@ -72,6 +72,12 @@ if (count($_POST) && $params->get('setamount')) {
         }elseif($payment_type=="binancecoin"){
 			$currency_type = "BNB";
             $minimum = Flux::config('MinDonationAmountBNB');
+        }elseif($payment_type=="ripple"){
+			$currency_type = "XRP";
+            $minimum = Flux::config('MinDonationAmountXRP');
+        }elseif($payment_type=="solana"){
+			$currency_type = "SOL";
+            $minimum = Flux::config('MinDonationAmountSOL');
         }elseif($payment_type=="shibabep20"){
 			$currency_type = "SHIB";
             $minimum = Flux::config('MinDonationAmountShibaBEP20');

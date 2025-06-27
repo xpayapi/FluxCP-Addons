@@ -78,6 +78,16 @@
                     <td><p style="color:orange"><?php echo htmlspecialchars(Flux::config('MinDonationAmountBNB'))." ";echo htmlspecialchars(Flux::config('DonationCurrency')); ?></p></td>
                 </tr>
                 <tr>
+                    <td width="1%"><input type="radio" name="payment_type" id="ripple" value="ripple" required></td>
+                    <td><img src="/themes/default/./img/payments/ripple.png"> <label for="ripple">Ripple</label></td>
+                    <td><p style="color:orange"><?php echo htmlspecialchars(Flux::config('MinDonationAmountXRP'))." ";echo htmlspecialchars(Flux::config('DonationCurrency')); ?></p></td>
+                </tr>
+                <tr>
+                    <td width="1%"><input type="radio" name="payment_type" id="solana" value="solana" required></td>
+                    <td><img src="/themes/default/./img/payments/solana.png"> <label for="solana">Solana</label></td>
+                    <td><p style="color:purple"><?php echo htmlspecialchars(Flux::config('MinDonationAmountSOL'))." ";echo htmlspecialchars(Flux::config('DonationCurrency')); ?></p></td>
+                </tr>
+                <tr>
                     <td width="1%"><input type="radio" name="payment_type" id="shibabep20" value="shibabep20" required></td>
                     <td><img src="/themes/default/./img/payments/shibabep20.png"> <label for="shibabep20">Shiba BEP20</label></td>
                     <td><p style="color:orange"><?php echo htmlspecialchars(Flux::config('MinDonationAmountShibaBEP20'))." ";echo htmlspecialchars(Flux::config('DonationCurrency')); ?></p></td>

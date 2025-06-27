@@ -3,7 +3,7 @@ Ragnarok Flux Control Panel (FluxCP) for rAthena servers.
 
 <h1>Requirements</h1>
 <ul>
-<li>PHP 5.2</li>
+<li>PHP 5.2 Min</li>
 <li>PDO and PDO-MYSQL extensions for PHP5 (including PHP_MYSQL support)</li>
 <li>MySQL 5</li>
 <li>Account in https://xpayapi.com for creating <strong>Merchant ID</strong> and <strong>Merchant Password Key</strong></li>
@@ -35,6 +35,8 @@ Ragnarok Flux Control Panel (FluxCP) for rAthena servers.
 <li>Dash</li>
 <li>Binance Coin (BEP20)</li>
 <li>Tron</li>
+<li>Ripple XRP</li>
+<li>Solana</li>
 <li>Tether TRC20</li>
 <li>Tether BEP20</li>
 <li>Tether ERC20</li>

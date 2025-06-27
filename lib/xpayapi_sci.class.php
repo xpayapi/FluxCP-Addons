@@ -75,10 +75,23 @@ class xPayApiSCI
             "system_id" => 25,
             "system" => "BinanceCoin",
             "tag" => false,
+            "tag_title" => "",
             "qr_prefix" => "",
             "display_name" => "BNB",
             "currency_list" => [
                 "BNB",
+            ],
+        ],
+        "ripple" => [
+            "type" => "crypto",
+            "system_id" => 38,
+            "system" => "Ripple",
+            "tag" => true,
+            "tag_title" => "tag",
+            "qr_prefix" => "",
+            "display_name" => "XRP",
+            "currency_list" => [
+                "XRP",
             ],
         ],
         "tron" => [
@@ -139,6 +152,18 @@ class xPayApiSCI
             "display_name" => "BertyCash",
             "currency_list" => [
                 "USD", "RUB",
+            ],
+        ],
+        "ton" => [
+            "type" => "crypto",
+            "system_id" => 33,
+            "system" => "TON",
+            "tag" => true,
+            "tag_title" => "comment",
+            "qr_prefix" => "ton://transfer/",
+            "display_name" => "TON",
+            "currency_list" => [
+                "TON", "USDT",
             ],
         ],
     ];
@@ -327,19 +352,38 @@ class xPayApiSCI
             return $this->err("Wrong params");
         }
         if (true === $system_settings["tag"]) {
-            $query_params =
-                $query_params + [
-                    "tag" => $tag,
-                    "memo" => $tag,
-                    "dt" => $tag,
-                ];
+            if ($system_settings["system"] === "TON") {
+                $query_params =
+                    $query_params + [
+                        "text" => $tag,
+                    ];
+                if ($currency === "USDT") {
+                    $query_params =
+                        $query_params + [
+                            "jetton" => "EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs",
+                        ];
+                }
+            } else {
+                $query_params =
+                    $query_params + [
+                        "tag" => $tag,
+                        "memo" => $tag,
+                        "dt" => $tag,
+                    ];
+            }
         }
 
         if (null !== $amount) {
-            $query_params = $query_params + [
-               "amount" => $amount,
-               "value" => $amount,
-            ];
+            if ($system_settings["system"] === "TON") {
+                $query_params = $query_params + [
+                        "amount" => (int)($currency === "TON" ? $amount * 1e9 : $amount * 1e6),
+                    ];
+            } else {
+                $query_params = $query_params + [
+                        "amount" => $amount,
+                        "value" => $amount,
+                    ];
+            }
         }
 
         $qr_link = sprintf("%s%s%s%s",

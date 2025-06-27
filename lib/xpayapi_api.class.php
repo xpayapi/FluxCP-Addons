@@ -76,10 +76,23 @@ class xPayApiAPI
             "system_id" => 25,
             "system" => "BinanceCoin",
             "tag" => false,
+            "tag_title" => "",
             "qr_prefix" => "",
             "display_name" => "BNB",
             "currency_list" => [
                 "BNB",
+            ],
+        ],
+        "ripple" => [
+            "type" => "crypto",
+            "system_id" => 38,
+            "system" => "Ripple",
+            "tag" => true,
+            "tag_title" => "tag",
+            "qr_prefix" => "",
+            "display_name" => "XRP",
+            "currency_list" => [
+                "XRP",
             ],
         ],
         "tron" => [

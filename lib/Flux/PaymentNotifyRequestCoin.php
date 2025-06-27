@@ -181,11 +181,19 @@ class Flux_PaymentNotifyRequestCoin {
 			$sth = $servGroup->connection->getStatement($sql);
 			$sth->execute(array($data_order_id));
 			$invoice = $sth->fetch();
+
+			// Check invoice status
+			$this->logCrypto('Check Transaction status %s.', $invoice->status);
+
 			if ($invoice && $invoice->status==0) {
                 $sql = "SELECT id FROM {$servGroup->loginDatabase}.$invoiceTables WHERE order_id = ? AND batch = ? LIMIT 1";
                 $sth = $servGroup->connection->getStatement($sql);
                 $sth->execute(array($data_order_id,$data_batch));
                 $batchid = $sth->fetch();
+
+				// Check batch ID
+				$this->logCrypto('Check Transaction batch ID %s.', $batchid);
+
                 if (!$batchid) {
                     if ($data_message == 'SUCCESS' && $data_amount>=$invoice->amount_in_coin) {
                         $this->logCrypto('Payment for txn_id#%s has been completed.', $data_order_id);
@@ -228,7 +236,12 @@ class Flux_PaymentNotifyRequestCoin {
                         $sth = $servGroup->connection->getStatement($sql);
                         $sth->execute(array($data_batch,$data_order_id));
                         die($data_order_id.'|success');
-                    }
+                    }else{
+						
+						// Transaction Fail
+						$this->logCrypto('Transaction Fail %s.', $data_message);
+						$this->logCrypto('Transaction Order ID %s.', $data_order_id);
+					}
                 }
                 else {
                     $this->logCrypto('Failed to credits. Multiple Batch ID %s', $data_batch);

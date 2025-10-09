@@ -32,7 +32,12 @@
 	</div>
 
 	<?php if ($donationAmount && $donationType && $donationCredits): ?>
-        <p><em class="text-danger">Please wait,</em> redirecting to payments...</p>
+	<?php if ($error && $error_msg): ?>
+        <h3><em class="text-danger">Error!</em> <?php echo $error_msg;?></h3>
+
+    <?php else: ?>
+        <h3><em class="text-danger">Please wait,</em> redirecting to payments...</h3>
+    <?php endif; ?>
 
     <?php else: ?>
 
@@ -96,6 +101,11 @@
                     <td width="1%"><input type="radio" name="payment_type" id="tron" value="tron" required></td>
                     <td><img src="/themes/default/./img/payments/tron.png"> <label for="tron">Tron</label></td>
                     <td><p style="color:orange"><?php echo htmlspecialchars(Flux::config('MinDonationAmountTRON'))." ";echo htmlspecialchars(Flux::config('DonationCurrency')); ?></p></td>
+                </tr>
+                <tr>
+                    <td width="1%"><input type="radio" name="payment_type" id="ton" value="ton" required></td>
+                    <td><img src="/themes/default/./img/payments/ton.png"> <label for="ton">Ton</label></td>
+                    <td><p style="color:orange"><?php echo htmlspecialchars(Flux::config('MinDonationAmountTON'))." ";echo htmlspecialchars(Flux::config('DonationCurrency')); ?></p></td>
                 </tr>
                 <tr>
                     <td width="1%"><input type="radio" name="payment_type" id="tron_trc20" value="tron_trc20" required></td>

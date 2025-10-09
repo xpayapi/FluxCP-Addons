@@ -9,8 +9,31 @@ class xPayApiAPI
     private $params;
     private $curl;
 
-
     private static $system_settings = [
+        "perfectmoney" => [
+            "type" => "emoney",
+            "system_id" => 1,
+            "system" => "PerfectMoney",
+            "tag" => false,
+            "tag_title" => "",
+            "qr_prefix" => "",
+            "display_name" => "PerfectMoney",
+            "currency_list" => [
+                "USD", "RUB",
+            ],
+        ],
+        "berty" => [
+            "type" => "emoney",
+            "system_id" => 7,
+            "system" => "Berty",
+            "tag" => false,
+            "tag_title" => "",
+            "qr_prefix" => "",
+            "display_name" => "BertyCash",
+            "currency_list" => [
+                "USD", "RUB",
+            ],
+        ],
         "bitcoin" => [
             "type" => "crypto",
             "system_id" => 20,
@@ -83,18 +106,6 @@ class xPayApiAPI
                 "BNB",
             ],
         ],
-        "ripple" => [
-            "type" => "crypto",
-            "system_id" => 38,
-            "system" => "Ripple",
-            "tag" => true,
-            "tag_title" => "tag",
-            "qr_prefix" => "",
-            "display_name" => "XRP",
-            "currency_list" => [
-                "XRP",
-            ],
-        ],
         "tron" => [
             "type" => "crypto",
             "system_id" => 26,
@@ -143,6 +154,66 @@ class xPayApiAPI
                 "USDT", "BUSD", "USDC", "SHIB",
             ],
         ],
+        "bitcoincash" => [
+            "type" => "crypto",
+            "system_id" => 36,
+            "system" => "Bitcoincash",
+            "tag" => false,
+            "tag_title" => "",
+            "qr_prefix" => "bch:",
+            "display_name" => "BCH",
+            "currency_list" => [
+                "BCH",
+            ],
+        ],
+        "zcash" => [
+            "type" => "crypto",
+            "system_id" => 37,
+            "system" => "Zcash",
+            "tag" => false,
+            "tag_title" => "",
+            "qr_prefix" => "zec:",
+            "display_name" => "ZEC",
+            "currency_list" => [
+                "ZEC",
+            ],
+        ],
+        "ripple" => [
+            "type" => "crypto",
+            "system_id" => 38,
+            "system" => "Ripple",
+            "tag" => true,
+            "tag_title" => "tag",
+            "qr_prefix" => "",
+            "display_name" => "XRP",
+            "currency_list" => [
+                "XRP",
+            ],
+        ],
+        "stellar" => [
+            "type" => "crypto",
+            "system_id" => 39,
+            "system" => "Stellar",
+            "tag" => false,
+            "tag_title" => "",
+            "qr_prefix" => "xlm:",
+            "display_name" => "XLM",
+            "currency_list" => [
+                "XLM",
+            ],
+        ],
+        "ethereumclassic" => [
+            "type" => "crypto",
+            "system_id" => 42,
+            "system" => "EthereumClassic",
+            "tag" => false,
+            "tag_title" => "",
+            "qr_prefix" => "etc:",
+            "display_name" => "ETC",
+            "currency_list" => [
+                "ETC",
+            ],
+        ],
         "solana" => [
             "type" => "crypto",
             "system_id" => 43,
@@ -155,21 +226,9 @@ class xPayApiAPI
                 "SOL",
             ],
         ],
-        "berty" => [
-            "type" => "emoney",
-            "system_id" => 7,
-            "system" => "Berty",
-            "tag" => false,
-            "tag_title" => "",
-            "qr_prefix" => "",
-            "display_name" => "BertyCash",
-            "currency_list" => [
-                "USD", "RUB",
-            ],
-        ],
         "ton" => [
             "type" => "crypto",
-            "system_id" => 33,
+            "system_id" => 44,
             "system" => "TON",
             "tag" => true,
             "tag_title" => "comment",

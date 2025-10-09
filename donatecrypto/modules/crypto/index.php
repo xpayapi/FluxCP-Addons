@@ -2,8 +2,18 @@
 if (!defined('FLUX_ROOT')) exit;
 
 $this->loginRequired(Flux::message('LoginToDonate'));
-function cFormat($number,$decimal=8){
-  return bcdiv(format_amount_with_no_e($number), 1, $decimal)+0;
+
+function cFormat($number, ?string $decimal = null) {
+  if ($decimal === null) {
+    $decimal = 8;
+  }
+  return rtrim(rtrim(sprintf("%.".$decimal."f", (float)$number), '0'), '.');
+}
+function logDebug($msg = null){
+  $log = "response: " . print_r($msg, true) . PHP_EOL .
+    "-------------------------" . PHP_EOL;
+  //-
+  file_put_contents('./log_' . date("j.n") . '.txt', $log, FILE_APPEND);
 }
 function format_amount_with_no_e($float){
     $parts = explode('E', $float);
@@ -15,15 +25,14 @@ function format_amount_with_no_e($float){
         return $float;
     }
 }
-function cURLPost($url,$params,$headers=null){
+function cURLGet($url,$headers=null){
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, $url);
-  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
   if($headers!=null || !empty($headers)){
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
   }
   curl_setopt($ch, CURLOPT_REFERER, $_SERVER['SERVER_NAME']);
-  curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
   curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4 );
@@ -81,6 +90,9 @@ if (count($_POST) && $params->get('setamount')) {
         }elseif($payment_type=="shibabep20"){
 			$currency_type = "SHIB";
             $minimum = Flux::config('MinDonationAmountShibaBEP20');
+        }elseif($payment_type=="ton"){
+			$currency_type = "TON";
+            $minimum = Flux::config('MinDonationAmountTon');
         }elseif($payment_type=="tron_trc20" || $payment_type=="binancesmartchain_bep20" || $payment_type=="ethereum_erc20"){
 			$currency_type = "USDT";
             $minimum = Flux::config('MinDonationAmountTether');
@@ -105,12 +117,12 @@ if (count($_POST) && $params->get('setamount')) {
 			$address = "";
 			$amount_in_coin = 0;
 			$params_string = array(
-				'currency_in' => "usd",
+				'currency_in' => "USDT",
 				'currency_out' => $currency_type,
 			);
 			$params_string = json_encode($params_string);
-			$url = "https://currency.xpayapi.com/";
-			$getjson = cURLPost($url,$params_string);
+			$url = 'https://currency.xpayapi.com/index.php?currency_in='.$currency_type.'&currency_out=USDT';
+			$getjson = cURLGet($url);
 			if(isset($getjson['error']) && $getjson['error']){
 				// do here if error found
 				$amount_in_coin = 0;
@@ -142,6 +154,7 @@ if (count($_POST) && $params->get('setamount')) {
 				"binancesmartchain_bep20" => 28, // USDT BEP20   
 				"binancesmartchain_bep20" => 33, // SHIB BEP20
 				"ethereum_erc20" => 32, // USDT ERC20
+				"ton" => 44, // TON
 			];
 
 			$invoice_hash = md5(time());
@@ -177,9 +190,8 @@ if (count($_POST) && $params->get('setamount')) {
 
 			if ($res['error']) {
 				// do error here
-				echo "<pre>";
-				print_r($res);
-				echo "</pre>";
+				$error = true;
+				$error_msg = $res['message'];
 			} else {
 				$invoice_address = $res['data']['address'];
 				$redirect_url = '?module=crypto&action=invoice&id='.$res['data']['invoice'];
